@@ -9,12 +9,12 @@ phases:
     commands:
       - echo Build started on `date`
       - echo Building the Docker image...          
-      - docker build -t $REGISTRY/devops-sample-ecr-testing:go-server ./golang
-      - docker build -t $REGISTRY/devops-sample-ecr-testing:php-server ./php
+      - docker build -t $REGISTRY/devops-sample-testing/go-server:$IMAGE_TAG ./golang
+      - docker build -t $REGISTRY/devops-sample-testing/php-server:$IMAGE_TAG ./php
       
   post_build:
     commands:
       - echo Build completed on `date`
       - echo Pushing the Docker image...
-      - docker push $REGISTRY/devops-sample-ecr-testing:go-server
-      - docker push $REGISTRY/devops-sample-ecr-testing:php-server
+      - docker push $REGISTRY/devops-sample-testing/go-server:$IMAGE_TAG
+      - docker push $REGISTRY/devops-sample-testing/php-server:$IMAGE_TAG
